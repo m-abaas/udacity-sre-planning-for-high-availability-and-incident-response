@@ -19,12 +19,20 @@ data "aws_caller_identity" "current" {}
 data "terraform_remote_state" "vpc" {
   backend = "s3" 
   config = {
-     bucket = "udacity-tf-travis4"
+     bucket = "udacity-tf-mabbas"
      key    = "terraform/terraform.tfstate"
      region = "us-east-2"
    }
+}
 
 
+data "terraform_remote_state" "vpc_west" {
+  backend = "s3" 
+  config = {
+     bucket = "udacity-tf-mabbas"
+     key    = "terraform/terraform.tfstate"
+     region = "us-east-2"
+   }
 }
 
 data "aws_iam_policy" "instance-policy" {
